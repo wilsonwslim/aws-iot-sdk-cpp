@@ -1,20 +1,6 @@
 #!/bin/bash
-#
-# Copyright © 2018 Moxa Inc. All rights reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-
+# Copyright (C) 2019 Moxa Inc. All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
 
 DIR_WRK=$(dirname $(readlink -e $0))
 
@@ -27,12 +13,15 @@ OPENSSL_INCLUDE_DIR=$SYSROOT/usr/include
 OPENSSL_SSL_LIBRARY=$SYSROOT/usr/lib/arm-linux-gnueabihf/libssl.so
 OPENSSL_CRYPTO_LIBRARY=$SYSROOT/usr/lib/arm-linux-gnueabihf/libcrypto.so
 
+DIR_CMAKE=$DIR_SDK/build_cmake
+BIN_SAMPLE=$DIR_WRK/sample/binary
+
 function sdk_build()
 {
     echo "-- Process: $FUNCNAME ..."
-    rm -rf $DIR_SDK/build_cmake
-    mkdir -p $DIR_SDK/build_cmake
-    pushd $DIR_SDK/build_cmake > /dev/null
+    rm -rf $DIR_CMAKE $BIN_SAMPLE
+    mkdir -p $DIR_CMAKE $BIN_SAMPLE
+    pushd $DIR_CMAKE > /dev/null
     cmake ../. \
         -DCMAKE_TOOLCHAIN_FILE=$TOOLCHAIN_FILE \
         -DCMAKE_SYSROOT=$SYSROOT \
@@ -45,4 +34,3 @@ function sdk_build()
 }
 
 sdk_build
-

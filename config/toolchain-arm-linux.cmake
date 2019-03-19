@@ -1,24 +1,15 @@
-
-#
-# Copyright © 2018 Moxa Inc. All rights reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-
+# Copyright (C) 2019 Moxa Inc. All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
 
 # General CMAKE cross compile settings
 SET(CMAKE_SYSTEM_NAME Generic)
 SET(CMAKE_SYSTEM_VERSION 1)
+
+# This is the iothinxio include folder
+SET(IOTHINXIO_INC_DIR $ENV{DIR_ENV}/arm-linux-gnueabihf/libc/usr/include)
+
+# This is the iothinxio library folder
+SET(IOTHINXIO_LIB_DIR $ENV{DIR_ENV}/arm-linux-gnueabihf/libc/usr/lib/iothinx)
 
 # Specify toolchain directory
 SET(TOOLCHAIN_DIR $ENV{DIR_ENV}/bin)

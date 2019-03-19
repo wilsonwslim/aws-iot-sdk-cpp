@@ -1,20 +1,5 @@
-<!--
-#
-# Copyright © 2018 Moxa Inc. All rights reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
--->
+<!-- Copyright (C) 2019 Moxa Inc. All rights reserved. -->
+<!-- SPDX-License-Identifier: Apache-2.0               -->
 
 # AWS-IOT-SDK-CPP
 
@@ -145,7 +130,7 @@
 3. Install following package from package manager.
 
     ```
-    cmake git rsync
+    cmake git rsync tree vim
     ```
 
 ### Build the SDK
@@ -170,14 +155,14 @@
                             Default: v1.4.0
 
         --toolchain         GNU cross-toolchain directory.
-                            Default: /usr/local/bin/gcc-linaro-5.1-2015.08-x86_64_arm-linux-gnueabihf
+                            Default: /usr/local/arm-linux-gnueabihf
 
         --help              Display this help and exit.
 
     Examples:
         Default             ./setup.sh
         Specify             ./setup.sh -git https://github.com/aws/aws-iot-device-sdk-cpp.git -ver v1.4.0
-                            ./setup.sh --toolchain /usr/local/bin/gcc-linaro-5.1-2015.08-x86_64_arm-linux-gnueabihf
+                            ./setup.sh --toolchain /usr/local/arm-linux-gnueabihf
     ```
 
 2. Copy the **certificate**, **private key**, and the **root CA** that downloaded from the cloud to the following directory. [[Download Certificate](#create-certificate)]
@@ -250,6 +235,25 @@
     └── TestParser.json
     ```
 
+* You can also reference to the MOXA sample code with ioThinx I/O library **moxa_sample_mqtt.cpp** in the following directory.
+
+    ```
+    $ tree sample
+    sample
+    ├── binary
+    │   ├── certs
+    │   │   ├── abd17825b2-certificate.pem.crt
+    │   │   ├── abd17825b2-private.pem.key
+    │   │   ├── AmazonRootCA1.pem
+    │   ├── config
+    │   │   └── SampleConfig.json
+    │   └── moxa_sample_mqtt
+    └── source
+        ├── moxa_sample_mqtt.cpp
+        └── moxa_sample_mqtt.hpp
+    ```
+    * The compiled MOXA program **moxa_sample_mqtt** will be generated after the whole SDK is built.
+
 * Note
 
     ```
@@ -263,7 +267,13 @@
 
 1. Setup a network connection to allow target able to access the network.
 
-2. Copy compiled SDK program from host to target
+2. Install following package from package manager.
+
+    ```
+    tree
+    ```
+
+3. Copy compiled SDK program from host to target.
 
     ```
     $ tree
@@ -282,7 +292,7 @@
 1. Execute SDK program that cross-compiled by host.
 
     ```
-    $ ./pub-sub-sample
+    $ sudo ./pub-sub-sample
     ```
     * You need to install the dependency library for the SDK program if any not found.
 
@@ -330,4 +340,3 @@
 [cloud]: https://console.aws.amazon.com/iot/home
 [Reference_01]: https://github.com/aws/aws-iot-device-sdk-cpp
 [Reference_02]: https://docs.aws.amazon.com/iot/latest/developerguide/what-is-aws-iot.html
-
