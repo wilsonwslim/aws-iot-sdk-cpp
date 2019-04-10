@@ -27,7 +27,7 @@ release_aws-iot-sdk-cpp:
     only:
         - tags
     variables:
-        REPOSITORY: "git@github.com:kbwilson89/aws-iot-sdk-cpp.git"
+        REPOSITORY: "git@github.com:wilsonwslim/aws-iot-sdk-cpp.git"
         BRANCH: "master"
     script:
         - ./setup.sh
